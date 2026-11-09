@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101510">
+  <link rel="icon" href="data:,">
+  <title>CLUCK &amp; CHAOS — Arcade Brawler</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Cluck and Chaos home"><span class="brand-mark">✦</span><span>PIXEL<span class="brand-light"> PIT</span></span></a>
+      <div class="top-meta"><span class="live-dot"></span> ARCADE MODE <span class="meta-divider">/</span> <span id="bestWave">BEST WAVE 01</span></div>
+      <button class="sound-button" id="soundButton" aria-label="Toggle sound">♫ <span>SOUND ON</span></button>
+    </header>
+
+    <section class="game-layout">
+      <div class="arena-column">
+        <div class="arena-frame">
+          <div class="arena-topline"><span><i class="tiny-star">✦</i> THE FEATHERDOME</span><span class="arena-coordinate">EST. 1987 <b>•</b> NO REFEREE</span></div>
+          <div class="canvas-wrap">
+            <canvas id="game" width="480" height="270" aria-label="Pixel art chicken brawler game"></canvas>
+            <div class="screen-overlay" id="overlay">
+              <div class="overlay-card" id="overlayCard">
+                <div class="eyebrow"><span class="eyebrow-line"></span> A FEATHER-RUFFLING ARCADE BRAWLER <span class="eyebrow-line"></span></div>
+                <h1>CLUCK <span>&amp;</span><br>CHAOS</h1>
+                <p>One scrappy fighter. One very angry chicken.<br>Let's settle this in the coop.</p>
+                <button class="start-button" id="startButton">START BRAWLING <span>▶</span></button>
+                <div class="start-note">NO CHICKENS WERE ACTUALLY HARMED <span>✦</span></div>
+              </div>
+            </div>
+            <div class="toast" id="toast" aria-live="polite"></div>
+          </div>
+          <div class="arena-footer"><span><i class="status-pip"></i> <span id="statusText">READY WHEN YOU ARE</span></span><span>PIXEL PIT <b>×</b> FARM LEAGUE</span></div>
+        </div>
+        <div class="controls-strip">
+          <div class="control-tip"><span class="keycap">W</span><span class="keycap-row"><span class="keycap">A</span><span class="keycap">S</span><span class="keycap">D</span></span><span class="tip-label">MOVE</span></div>
+          <div class="control-tip"><span class="keycap wide">SPACE</span><span class="tip-label">SWING WEAPON</span></div>
+          <div class="control-tip"><span class="keycap">P</span><span class="tip-label">PAUSE</span></div>
+          <div class="controls-caption">TIP: CHICKENS ARE QUICK. YOU'RE QUICKER.<span> (PROBABLY)</span></div>
+          <div class="touch-hint"><span>↔ DRAG TO MOVE</span><span>✦ TAP RIGHT SIDE TO SWING</span></div>
+        </div>
+      </div>
+
+      <aside class="side-panel">
+        <section class="panel-block fighter-block">
+          <div class="section-label">YOUR FIGHTER <span class="label-rule"></span></div>
+          <div class="fighter-row"><div class="fighter-avatar" aria-hidden="true"><span class="avatar-head"></span><span class="avatar-body"></span><span class="avatar-tool"></span></div><div><div class="fighter-name">THE SCRAPPER</div><div class="fighter-sub">RANK <b id="rank">ROOKIE</b></div></div><div class="coin-counter"><span class="coin-icon">¢</span><span id="coins">00</span></div></div>
+          <div class="stat-line"><span>GRIT</span><div class="health-track"><div class="health-fill" id="healthFill"></div></div><b id="healthText">5 / 5</b></div>
+          <div class="stat-line"><span>SCRAP</span><div class="xp-track"><div class="xp-fill" id="xpFill"></div></div><b id="xpText">0%</b></div>
+        </section>
+
+        <section class="panel-block weapon-block">
+          <div class="section-label">THE ARMORY <span class="armory-note">UPGRADE YOUR EDGE</span></div>
+          <div class="weapon-current"><span class="weapon-emoji" id="weaponEmoji">🪵</span><span><b id="weaponName">OLD STICK</b><small id="weaponLevel">LV. 1 · SHORT REACH</small></span><span class="weapon-owned">EQUIPPED</span></div>
+          <div class="upgrade-list">
+            <button class="upgrade-card" data-upgrade="pan"><span class="upgrade-icon">🍳</span><span class="upgrade-copy"><b>IRON SKILLET</b><small>Heavy hits · +1 damage</small></span><span class="upgrade-cost">¢ 12</span></button>
+            <button class="upgrade-card" data-upgrade="fork"><span class="upgrade-icon">🔱</span><span class="upgrade-copy"><b>HAYFORK</b><small>Long reach · +1 damage</small></span><span class="upgrade-cost">¢ 24</span></button>
+            <button class="upgrade-card" data-upgrade="blade"><span class="upgrade-icon">⚔️</span><span class="upgrade-copy"><b>FEATHERBLADE</b><small>Fast swings · +2 damage</small></span><span class="upgrade-cost">¢ 40</span></button>
+          </div>
+          <div class="shop-hint" id="shopHint">WIN ROUNDS TO EARN SCRAP</div>
+        </section>
+
+        <section class="panel-block round-block">
+          <div class="section-label">FIGHT CARD <span class="label-rule"></span></div>
+          <div class="round-line"><span class="round-badge" id="roundBadge">01</span><span><b id="roundTitle">THE WARM-UP</b><small id="roundSub">A few pecky troublemakers</small></span><span class="round-arrow">→</span></div>
+          <div class="foe-row"><span class="foe-icon">🐔</span><span>FEATHERED FOES</span><b id="foeCount">0 / 3</b></div>
+        </section>
+        <div class="panel-footnote"><span>✦</span> KEEP YOUR FEATHERS ABOUT YOU.</div>
+      </aside>
+    </section>
+    <footer class="site-footer"><span>© 1987 PIXEL PIT ARCADE</span><span>BUILT FOR THE BOLD <b>✦</b> AND THE SLIGHTLY PECKISH</span><span>V 1.0.4</span></footer>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
